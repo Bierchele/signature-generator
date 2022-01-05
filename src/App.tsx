@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { SignatureForm } from "./components/SignatureForm";
 
-function App() {
+export interface ISignatureInfo {
+  firstName: string | undefined;
+  lastName: string | undefined;
+  title: string | undefined;
+  mobilNumber: string | undefined;
+  fax: string | undefined;
+  email: string | undefined;
+}
+
+const App = () => {
+  const [signatureInfo, setSignatureInfo] = useState<ISignatureInfo>({
+    firstName: "Hallo",
+    lastName: "",
+    title: "",
+    mobilNumber: "",
+    fax: "",
+    email: "",
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SignatureForm {...signatureInfo} />
     </div>
   );
-}
+};
 
 export default App;
