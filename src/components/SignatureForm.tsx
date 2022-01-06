@@ -13,68 +13,100 @@ const classes = () => ({
   nameBox: {
     display: "flex",
   } as SxProps,
-
-  nameInput: {
-    witdh: "200px",
-    margin: "0px 15px 5px 0px",
-  } as SxProps,
 });
 
 export const SignatureForm: React.FC<ISignatureInfo> = ({
-  firstName,
-  lastName,
-  title,
-  mobilNumber,
-  fax,
-  email,
+  setSignatureInfo,
+  ...signatureInfo
 }) => {
-  const setSignatureInfos = (signatureFrgament: string) => {};
   return (
     <form>
       <Box sx={classes().formBox}>
         <Box sx={classes().nameBox}>
           <TextField
-            sx={classes().nameInput}
+            sx={{ marginRight: "5px" }}
             size="small"
             variant="outlined"
-            value={firstName}
+            value={signatureInfo.firstName}
             label="Vorname"
+            fullWidth
+            onChange={(e) =>
+              setSignatureInfo({ ...signatureInfo, firstName: e.target.value })
+            }
           />
           <TextField
+            sx={{ marginLeft: "5px" }}
             size="small"
             variant="outlined"
-            value={lastName}
+            value={signatureInfo.lastName}
             label="Nachname"
+            fullWidth
+            onChange={(e) =>
+              setSignatureInfo({ ...signatureInfo, lastName: e.target.value })
+            }
           />
         </Box>
         <Box>
           <TextField
+            sx={{ marginTop: "7px" }}
             size="small"
             variant="outlined"
-            value={title}
+            value={signatureInfo.title}
             fullWidth
             label="Title"
+            onChange={(e) =>
+              setSignatureInfo({ ...signatureInfo, title: e.target.value })
+            }
           />
           <TextField
+            sx={{ marginTop: "7px" }}
             size="small"
             variant="outlined"
-            value={mobilNumber}
+            value={signatureInfo.tel}
+            fullWidth
+            label="Telefon"
+            onChange={(e) =>
+              setSignatureInfo({
+                ...signatureInfo,
+                tel: e.target.value,
+              })
+            }
+          />
+          <TextField
+            sx={{ marginTop: "7px" }}
+            size="small"
+            variant="outlined"
+            value={signatureInfo.mobilNumber}
             fullWidth
             label="Mobil"
+            onChange={(e) =>
+              setSignatureInfo({
+                ...signatureInfo,
+                mobilNumber: e.target.value,
+              })
+            }
           />
           <TextField
+            sx={{ marginTop: "7px" }}
             size="small"
             variant="outlined"
-            value={fax}
+            value={signatureInfo.fax}
             fullWidth
             label="Fax"
+            onChange={(e) =>
+              setSignatureInfo({ ...signatureInfo, fax: e.target.value })
+            }
           />
           <TextField
+            sx={{ marginTop: "7px" }}
             size="small"
             variant="outlined"
-            value={email}
+            value={signatureInfo.email}
             fullWidth
             label="E-Mail"
+            onChange={(e) =>
+              setSignatureInfo({ ...signatureInfo, email: e.target.value })
+            }
           />
         </Box>
       </Box>
